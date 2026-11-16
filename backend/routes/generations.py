@@ -273,31 +273,39 @@ async def cancel_generation(generation_id: str, db: Session = Depends(get_db)):
 
 
 @router.get("/generate/{generation_id}/status")
-async def get_generation_status(generation_id: str, db: Session = Depends(get_db)):
+async def get_generation_status(generation_id: str):
     """SSE endpoint that streams generation status updates."""
     import json
 
     async def event_stream():
         try:
             while True:
-                db.expire_all()
-                gen = db.query(DBGeneration).filter_by(id=generation_id).first()
-                if not gen:
-                    yield f"data: {json.dumps({'status': 'not_found', 'id': generation_id})}\n\n"
-                    return
+                db_dependency = get_db()
+                db = next(db_dependency)
+                try:
+                    gen = db.query(DBGeneration).filter_by(id=generation_id).first()
+                    if not gen:
+                        payload = {"status": "not_found", "id": generation_id}
+                        terminal = True
+                    else:
+                        payload = {
+                            "id": gen.id,
+                            "status": gen.status or "completed",
+                            "duration": gen.duration,
+                            "error": gen.error,
+                            # Agent-originated sources ("mcp", "rest") skip main-window
+                            # autoplay — the floating pill plays those directly.
+                            "source": gen.source,
+                        }
+                        terminal = payload["status"] in ("completed", "failed")
+                finally:
+                    # Don't keep a SQLite connection checked out while this SSE
+                    # stream waits for the next update or for the client to read.
+                    db_dependency.close()
 
-                payload = {
-                    "id": gen.id,
-                    "status": gen.status or "completed",
-                    "duration": gen.duration,
-                    "error": gen.error,
-                    # Agent-originated sources ("mcp", "rest") skip main-window
-                    # autoplay — the floating pill plays those directly.
-                    "source": gen.source,
-                }
                 yield f"data: {json.dumps(payload)}\n\n"
 
-                if (gen.status or "completed") in ("completed", "failed"):
+                if terminal:
                     return
 
                 await asyncio.sleep(1)
