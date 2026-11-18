@@ -220,13 +220,18 @@ class ProgressManager:
             
             if initial_progress:
                 status = initial_progress.get('status')
-                # Only send initial progress if download is actually in progress
-                # Don't send old 'complete' or 'error' status from previous downloads
-                if status in ('downloading', 'extracting'):
-                    logger.info(f"Sending initial progress for {model_name}: {status}")
-                    yield f"data: {json.dumps(initial_progress)}\n\n"
-                else:
-                    logger.info(f"Skipping initial progress for {model_name} (status: {status})")
+                # A download request can finish before the browser opens the
+                # EventSource. Send the terminal event as well as in-flight
+                # progress so the toast cannot remain stuck at its initial
+                # "Connecting to download..." state. A new download replaces
+                # this entry with a fresh "downloading" event before the UI
+                # subscribes, so this does not replay an old result for a new
+                # request.
+                logger.info(f"Sending initial progress for {model_name}: {status}")
+                yield f"data: {json.dumps(initial_progress)}\n\n"
+                if status in ("complete", "error"):
+                    logger.info(f"Download {status} already recorded for {model_name}, closing SSE connection")
+                    return
             else:
                 logger.info(f"No initial progress available for {model_name}")
 
