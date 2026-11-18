@@ -29,7 +29,7 @@ async def root():
     index = _frontend_dir / "index.html"
     if index.is_file():
         return FileResponse(index, media_type="text/html")
-    return {"message": "voicebox API", "version": __version__}
+    return {"message": "Tuner Box API", "version": __version__}
 
 
 @router.post("/shutdown")
@@ -56,9 +56,6 @@ async def watchdog_disable():
 @router.get("/health", response_model=models.HealthResponse)
 async def health():
     """Health check endpoint."""
-    from huggingface_hub import constants as hf_constants
-    from pathlib import Path
-
     tts_model = tts.get_tts_model()
     backend_type = get_backend_type()
 
@@ -140,30 +137,16 @@ async def health():
     model_downloaded = None
     try:
         from ..backends import get_model_config
+        from ..backends.base import is_model_cached
 
         default_config = get_model_config("qwen-tts-1.7B")
         default_model_id = default_config.hf_repo_id if default_config else "Qwen/Qwen3-TTS-12Hz-1.7B-Base"
 
-        try:
-            from huggingface_hub import scan_cache_dir
-
-            cache_info = scan_cache_dir()
-            for repo in cache_info.repos:
-                if repo.repo_id == default_model_id:
-                    model_downloaded = True
-                    break
-        except (ImportError, Exception):
-            cache_dir = hf_constants.HF_HUB_CACHE
-            repo_cache = Path(cache_dir) / ("models--" + default_model_id.replace("/", "--"))
-            if repo_cache.exists():
-                has_model_files = (
-                    any(repo_cache.rglob("*.bin"))
-                    or any(repo_cache.rglob("*.safetensors"))
-                    or any(repo_cache.rglob("*.pt"))
-                    or any(repo_cache.rglob("*.pth"))
-                    or any(repo_cache.rglob("*.npz"))
-                )
-                model_downloaded = has_model_files
+        # A Hugging Face cache directory can exist while its weight blob is
+        # still incomplete. Treat only a complete snapshot as downloaded;
+        # otherwise health reports a false positive and the next load can
+        # fail inside Transformers with a None checkpoint path.
+        model_downloaded = is_model_cached(default_model_id)
     except Exception:
         pass
 
@@ -185,7 +168,7 @@ async def health():
         gpu_type=gpu_type,
         vram_used_mb=vram_used,
         backend_type=backend_type,
-        backend_variant=os.environ.get("VOICEBOX_BACKEND_VARIANT", default_variant),
+        backend_variant=os.environ.get("TUNER_BOX_BACKEND_VARIANT", default_variant),
         supports_rocm=is_amd_gpu_windows(),
         gpu_compatibility_warning=gpu_compat_warning,
     )
@@ -211,7 +194,7 @@ async def filesystem_health():
         writable = False
         error = None
         if exists:
-            probe = dir_path / ".voicebox_probe"
+            probe = dir_path / ".tuner-box_probe"
             try:
                 probe.write_text("ok")
                 probe.unlink()
