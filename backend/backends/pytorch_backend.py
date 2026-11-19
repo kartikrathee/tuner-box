@@ -113,11 +113,25 @@ class PyTorchTTSBackend:
                     low_cpu_mem_usage=False,
                 )
             else:
+                gpu_kwargs = {
+                    "device_map": self.device,
+                    "torch_dtype": torch.bfloat16,
+                }
+                # Qwen recommends FlashAttention 2 for CUDA inference. Keep
+                # the fallback explicit so CPU and GPU images share the same
+                # backend when the optional wheel is unavailable.
+                try:
+                    import flash_attn  # noqa: F401
+                except ImportError:
+                    logger.warning(
+                        "flash-attn is not installed; using the default attention implementation"
+                    )
+                else:
+                    gpu_kwargs["attn_implementation"] = "flash_attention_2"
                 self.model = Qwen3TTSModel.from_pretrained(
                     model_path,
                     cache_dir=tts_cache_dir,
-                    device_map=self.device,
-                    torch_dtype=torch.bfloat16,
+                    **gpu_kwargs,
                 )
 
         self._current_model_size = model_size
