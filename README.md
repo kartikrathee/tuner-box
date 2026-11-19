@@ -1,8 +1,8 @@
 <p align="center">
-  <img src=".github/assets/icon-dark.webp" alt="Voicebox" width="120" height="120" />
+  <img src=".github/assets/icon-dark.webp" alt="Tuner Box" width="120" height="120" />
 </p>
 
-<h1 align="center">Voicebox</h1>
+<h1 align="center">Tuner Box</h1>
 
 <p align="center">
   <strong>The open-source AI voice studio.</strong><br/>
@@ -11,30 +11,30 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/jamiepine/voicebox/releases">
-    <img src="https://img.shields.io/github/downloads/jamiepine/voicebox/total?style=flat&color=blue" alt="Downloads" />
+  <a href="https://github.com/jamiepine/tuner-box/releases">
+    <img src="https://img.shields.io/github/downloads/jamiepine/tuner-box/total?style=flat&color=blue" alt="Downloads" />
   </a>
-  <a href="https://github.com/jamiepine/voicebox/releases/latest">
-    <img src="https://img.shields.io/github/v/release/jamiepine/voicebox?style=flat" alt="Release" />
+  <a href="https://github.com/jamiepine/tuner-box/releases/latest">
+    <img src="https://img.shields.io/github/v/release/jamiepine/tuner-box?style=flat" alt="Release" />
   </a>
-  <a href="https://github.com/jamiepine/voicebox/stargazers">
-    <img src="https://img.shields.io/github/stars/jamiepine/voicebox?style=flat" alt="Stars" />
+  <a href="https://github.com/jamiepine/tuner-box/stargazers">
+    <img src="https://img.shields.io/github/stars/jamiepine/tuner-box?style=flat" alt="Stars" />
   </a>
-  <a href="https://github.com/jamiepine/voicebox/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/jamiepine/voicebox?style=flat" alt="License" />
+  <a href="https://github.com/jamiepine/tuner-box/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/jamiepine/tuner-box?style=flat" alt="License" />
   </a>
-  <a href="https://deepwiki.com/jamiepine/voicebox">
+  <a href="https://deepwiki.com/jamiepine/tuner-box">
     <img src="https://img.shields.io/static/v1?label=Ask&message=DeepWiki&color=5B6EF7" alt="Ask DeepWiki" />
   </a>
 </p>
 
 <p align="center">
-    <a href="https://trendshift.io/repositories/21213" target="_blank"><img src="https://trendshift.io/api/badge/repositories/21213" alt="jamiepine%2Fvoicebox | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+    <a href="https://trendshift.io/repositories/21213" target="_blank"><img src="https://trendshift.io/api/badge/repositories/21213" alt="jamiepine%2Ftuner-box | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </p>
 
 <p align="center">
-  <a href="https://voicebox.sh">voicebox.sh</a> •
-  <a href="https://docs.voicebox.sh">Docs</a> •
+  <a href="https://tuner-box.sh">tuner-box.sh</a> •
+  <a href="https://docs.tuner-box.sh">Docs</a> •
   <a href="#download">Download</a> •
   <a href="#features">Features</a> •
   <a href="#api">API</a> •
@@ -44,32 +44,32 @@
 <br/>
 
 <p align="center">
-  <a href="https://voicebox.sh">
-    <img src="landing/public/assets/app-screenshot-1.webp" alt="Voicebox App Screenshot" width="800" />
+  <a href="https://tuner-box.sh">
+    <img src="landing/public/assets/app-screenshot-1.webp" alt="Tuner Box App Screenshot" width="800" />
   </a>
 </p>
 
 <p align="center">
-  <em>Click the image above to watch the demo video on <a href="https://voicebox.sh">voicebox.sh</a></em>
+  <em>Click the image above to watch the demo video on <a href="https://tuner-box.sh">tuner-box.sh</a></em>
 </p>
 
 <br/>
 
 <p align="center">
-  <img src="landing/public/assets/app-screenshot-2.webp" alt="Voicebox Screenshot 2" width="800" />
+  <img src="landing/public/assets/app-screenshot-2.webp" alt="Tuner Box Screenshot 2" width="800" />
 </p>
 
 <p align="center">
-  <img src="landing/public/assets/app-screenshot-3.webp" alt="Voicebox Screenshot 3" width="800" />
+  <img src="landing/public/assets/app-screenshot-3.webp" alt="Tuner Box Screenshot 3" width="800" />
 </p>
 
 <br/>
 
-## What is Voicebox?
+## What is Tuner Box?
 
-Voicebox is a **local-first AI voice studio** — a free and open-source alternative to **ElevenLabs** and **WisprFlow** in one app. Clone voices from a few seconds of audio, generate speech in 23 languages across 7 TTS engines, dictate into any text field with a global hotkey, and give any MCP-aware AI agent a voice of your choosing.
+Tuner Box is a **local-first AI voice studio** — a free and open-source alternative to **ElevenLabs** and **WisprFlow** in one app. Clone voices from a few seconds of audio, generate speech in 23 languages across 7 TTS engines, dictate into any text field with a global hotkey, and give any MCP-aware AI agent a voice of your choosing.
 
-The two cloud incumbents sit on opposite halves of the voice I/O loop — ElevenLabs on output, WisprFlow on input. Voicebox does both, bridges them with a bundled local LLM for refinement and per-profile personas, and runs the whole thing on your machine.
+The two cloud incumbents sit on opposite halves of the voice I/O loop — ElevenLabs on output, WisprFlow on input. Tuner Box does both, bridges them with a bundled local LLM for refinement and per-profile personas, and runs the whole thing on your machine.
 
 - **Complete privacy** — models, voice data, and captures never leave your machine
 - **7 TTS engines** — Qwen3-TTS, Qwen CustomVoice, LuxTTS, Chatterbox Multilingual, Chatterbox Turbo, HumeAI TADA, and Kokoro
@@ -80,7 +80,7 @@ The two cloud incumbents sit on opposite halves of the voice I/O loop — Eleven
 - **Unlimited length** — auto-chunking with crossfade for scripts, articles, and chapters
 - **Stories editor** — multi-track timeline for conversations, podcasts, and narratives
 - **Voice input** — global dictation hotkey with push-to-talk and toggle modes, accessibility-verified auto-paste on macOS, in-app mic on every text field, Whisper-based STT
-- **Agent voice output** — one tool call (`voicebox.speak`) and any MCP-aware agent (Claude Code, Cursor, Cline) speaks to you in a voice you've cloned
+- **Agent voice output** — one tool call (`tuner-box.speak`) and any MCP-aware agent (Claude Code, Cursor, Cline) speaks to you in a voice you've cloned
 - **Voice personalities** — attach a free-form persona to any voice profile, then Compose, Rewrite, or Respond via a bundled local LLM — agents can invoke the same modes over MCP
 - **API-first** — REST API plus a built-in MCP server for integrating voice I/O into your own apps and agents
 - **Native performance** — built with Tauri (Rust), not Electron
@@ -92,16 +92,51 @@ The two cloud incumbents sit on opposite halves of the voice I/O loop — Eleven
 
 | Platform              | Download                                               |
 | --------------------- | ------------------------------------------------------ |
-| macOS (Apple Silicon) | [Download DMG](https://voicebox.sh/download/mac-arm)   |
-| macOS (Intel)         | [Download DMG](https://voicebox.sh/download/mac-intel) |
-| Windows               | [Download MSI](https://voicebox.sh/download/windows)   |
+| macOS (Apple Silicon) | [Download DMG](https://tuner-box.sh/download/mac-arm)   |
+| macOS (Intel)         | [Download DMG](https://tuner-box.sh/download/mac-intel) |
+| Windows               | [Download MSI](https://tuner-box.sh/download/windows)   |
 | Docker                | `docker compose up`                                    |
 
-> **[View all binaries →](https://github.com/jamiepine/voicebox/releases/latest)**
+> **[View all binaries →](https://github.com/jamiepine/tuner-box/releases/latest)**
 
-> **Linux** — Pre-built binaries are not yet available. See [voicebox.sh/linux-install](https://voicebox.sh/linux-install) for build-from-source instructions.
+> **Linux** — Pre-built binaries are not yet available. See [tuner-box.sh/linux-install](https://tuner-box.sh/linux-install) for build-from-source instructions.
 
 > **Having trouble?** See the [Troubleshooting Guide](docs/content/docs/overview/troubleshooting.mdx) for common install, generation, model-download, and GPU issues.
+
+### Local backend and GKE
+
+Tuner Box's local TTS, Whisper transcription, voice profiles, and local LLM
+refinement do not require an OpenAI API key. The backend downloads its selected
+open models from Hugging Face on first use and keeps them in the configured model
+cache. An OpenAI key is only needed if you add a separate external OpenAI
+integration; this repository does not use one for its core local path.
+
+For a GKE GPU deployment, start with the single-GPU baseline in
+[`deploy/gke/README.md`](deploy/gke/README.md). The current backend owns SQLite,
+profile/audio files, and a process-local serial GPU queue, so the baseline uses
+one pod per persistent volume and GPU. Move metadata, audio, and the queue to
+shared services before increasing replicas.
+
+### Client demo surfaces
+
+There are two local browser surfaces:
+
+- The Tuner Box web client is built from `web/`. Run `bun install && bun run
+  build`, then `bun run dev -- --host 127.0.0.1` from that directory and open
+  `http://127.0.0.1:5173/`. It connects to `http://127.0.0.1:17493` by
+  default; set `VITE_SERVER_URL` or change the server URL in the client when
+  using a remote backend.
+- The Fumadocs site is in `docs/`. Run `bun install && bun run dev --
+  --hostname 127.0.0.1` and open `http://127.0.0.1:3000/`. The generated API
+  reference is under `/api-reference/`, and the checked-in schema is
+  [`docs/openapi.json`](docs/openapi.json).
+
+When the backend is running directly, its interactive Swagger UI is at
+`http://127.0.0.1:17493/docs`, ReDoc is at `/redoc`, and the raw schema is at
+`/openapi.json`. The default Docker Compose mapping uses
+`http://127.0.0.1:17600` on the host and keeps port `17493` inside the
+container. The API has no built-in authentication, so keep demo services on
+loopback or behind an authenticated proxy.
 
 ---
 
@@ -196,18 +231,18 @@ Multi-voice timeline editor for conversations, podcasts, and narratives.
 
 ### Global Dictation & Voice Input
 
-The other half of the voice I/O loop. Hold a hotkey anywhere on your system, speak, release — on macOS the transcript pastes straight into the focused text field. Or hit the mic on any Voicebox text input and dictate directly into the app.
+The other half of the voice I/O loop. Hold a hotkey anywhere on your system, speak, release — on macOS the transcript pastes straight into the focused text field. Or hit the mic on any Tuner Box text input and dictate directly into the app.
 
 - **Configurable chord bindings** — hold-to-speak and tap-to-toggle chords, each rebindable in the in-app chord picker. Holding push-to-talk and tapping `Space` mid-hold upgrades into a toggle session without a gap in audio
 - **Target-aware paste (macOS)** — accessibility-verified injection into the focused text field, with atomic clipboard save/restore so your clipboard isn't clobbered
 - **First-run permissions UX** — in-app gates walk you through the macOS Accessibility and Input Monitoring grants with deep-links to System Settings
-- **In-app mic button** on every Voicebox text field — generation form, profile descriptions, story titles, anywhere you'd type
+- **In-app mic button** on every Tuner Box text field — generation form, profile descriptions, story titles, anywhere you'd type
 - **LLM refinement** — optional cleanup of ums, stutters, and false starts before paste
 - **On-screen pill** — floating overlay surfacing `recording`, `transcribing`, `refining`, and `speaking` states. Same pill agents use when they speak to you, so there's one mental model for both directions of the loop
 
 ### Speech-to-Text
 
-Voicebox runs OpenAI Whisper for transcription — the same model that backs dictation, the Captures tab, and the `/transcribe` API. Running on MLX (Apple Silicon) or PyTorch (CUDA / ROCm / DirectML / CPU) depending on your platform.
+Tuner Box runs OpenAI Whisper for transcription — the same model that backs dictation, the Captures tab, and the `/transcribe` API. Running on MLX (Apple Silicon) or PyTorch (CUDA / ROCm / DirectML / CPU) depending on your platform.
 
 | Size                          | Notes                                              |
 | ----------------------------- | -------------------------------------------------- |
@@ -224,7 +259,7 @@ Every dictation, in-app recording, and uploaded audio file lands in the Captures
 - **Edit inline** — tweak the transcript and save on blur
 - **Play as voice profile** — turn any capture into speech with a cloned voice, one click
 - **Promote to voice sample** — use a capture's audio + transcript as a reference sample on any voice profile
-- **Local capture storage** — original audio and transcript stay in your Voicebox data directory, with a folder shortcut in Settings
+- **Local capture storage** — original audio and transcript stay in your Tuner Box data directory, with a folder shortcut in Settings
 
 ### Agent Voice Output
 
@@ -232,7 +267,7 @@ Every agent gets a voice. One tool call and any MCP-aware agent can speak to you
 
 ```ts
 // In any MCP-aware agent:
-await voicebox.speak({
+await tuner-box.speak({
   text: "Deploy complete.",
   profile: "Morgan",
 });
@@ -243,7 +278,7 @@ Also exposed as `POST /speak` for anything that doesn't speak MCP — ACP, A2A, 
 - **Bidirectional pill** — `recording`, `transcribing`, `refining`, and `speaking` are all states of the same OS-level overlay, so dictation and agent speech share one surface
 - **Per-agent voice binding** — in **Settings → MCP**, pin Claude Code to Morgan and Cursor to Scarlett so you can tell which agent is talking without looking. Each client's `last_seen_at` timestamp confirms the install actually took
 - **Always visible** — no silent background TTS; every agent-initiated speak surfaces the pill with the voice profile name for the full duration
-- **HTTP + stdio transports** — install as a URL in Claude Code / Cursor / Windsurf / VS Code MCP, or point stdio-only clients at the bundled `voicebox-mcp` binary
+- **HTTP + stdio transports** — install as a URL in Claude Code / Cursor / Windsurf / VS Code MCP, or point stdio-only clients at the bundled `tuner-box-mcp` binary
 
 ### Voice Personalities
 
@@ -252,7 +287,7 @@ Attach a free-form personality to any voice profile — who this voice is, how t
 - **Compose** — a shuffle button that drops a fresh in-character line into the textarea; edit and speak, or click again for a different take
 - **Speak in character** — a toggle that routes your input text through the personality LLM to be rewritten in their voice before TTS
 
-Agents can reach the same rewrite path over MCP by passing `personality: true` to `voicebox.speak`, turning the tool into a text-in → personality-LLM → TTS pipeline. The same LLM backs dictation's refinement step — one LLM in the app, one model cache, one GPU-memory footprint.
+Agents can reach the same rewrite path over MCP by passing `personality: true` to `tuner-box.speak`, turning the tool into a text-in → personality-LLM → TTS pipeline. The same LLM backs dictation's refinement step — one LLM in the app, one model cache, one GPU-memory footprint.
 
 **Local LLM options:** Qwen3 0.6B / 1.7B / 4B, sharing the TTS runtime (MLX on Apple Silicon, PyTorch elsewhere).
 
@@ -261,7 +296,7 @@ Use cases: agent dev loops (dictate a question, hear the answer in a cloned voic
 ### Model Management
 
 - Per-model unload to free GPU memory without deleting downloads
-- Custom models directory via `VOICEBOX_MODELS_DIR`
+- Custom models directory via `TUNER_BOX_MODELS_DIR`
 - Model folder migration with progress tracking
 - Download cancel/clear UI
 
@@ -281,7 +316,7 @@ Use cases: agent dev loops (dictate a question, hear the answer in a cloned voic
 
 ## API
 
-Voicebox exposes a REST API for integrating voice I/O into your own apps and agents.
+Tuner Box exposes a REST API for integrating voice I/O into your own apps and agents.
 
 ```bash
 # Generate speech
@@ -292,7 +327,7 @@ curl -X POST http://127.0.0.1:17493/generate \
 # Agent voice output — any app or script can speak in a cloned voice
 curl -X POST http://127.0.0.1:17493/speak \
   -H "Content-Type: application/json" \
-  -H "X-Voicebox-Client-Id: my-script" \
+  -H "X-Tuner-Box-Client-Id: my-script" \
   -d '{"text": "Deploy complete.", "profile": "Morgan"}'
 
 # Transcribe an audio file
@@ -308,15 +343,15 @@ curl http://127.0.0.1:17493/profiles
 
 ### MCP server
 
-Voicebox ships a built-in **Model Context Protocol** server so any MCP-aware agent (Claude Code, Cursor, Windsurf, Cline, VS Code MCP extensions) can speak, transcribe, and browse captures and profiles.
+Tuner Box ships a built-in **Model Context Protocol** server so any MCP-aware agent (Claude Code, Cursor, Windsurf, Cline, VS Code MCP extensions) can speak, transcribe, and browse captures and profiles.
 
 **Claude Code one-liner:**
 
 ```
-claude mcp add voicebox \
+claude mcp add tuner-box \
   --transport http \
   --url http://127.0.0.1:17493/mcp \
-  --header "X-Voicebox-Client-Id: claude-code"
+  --header "X-Tuner-Box-Client-Id: claude-code"
 ```
 
 **Any HTTP MCP client** (Cursor, Windsurf, VS Code, etc.):
@@ -324,32 +359,32 @@ claude mcp add voicebox \
 ```json
 {
   "mcpServers": {
-    "voicebox": {
+    "tuner-box": {
       "url": "http://127.0.0.1:17493/mcp",
-      "headers": { "X-Voicebox-Client-Id": "cursor" }
+      "headers": { "X-Tuner-Box-Client-Id": "cursor" }
     }
   }
 }
 ```
 
-**Stdio fallback** for clients that don't speak HTTP MCP — point at the bundled `voicebox-mcp` binary inside the app:
+**Stdio fallback** for clients that don't speak HTTP MCP — point at the bundled `tuner-box-mcp` binary inside the app:
 
 ```json
 {
   "mcpServers": {
-    "voicebox": {
-      "command": "/Applications/Voicebox.app/Contents/MacOS/voicebox-mcp",
-      "env": { "VOICEBOX_CLIENT_ID": "claude-desktop" }
+    "tuner-box": {
+      "command": "/Applications/TunerBox.app/Contents/MacOS/tuner-box-mcp",
+      "env": { "TUNER_BOX_CLIENT_ID": "claude-desktop" }
     }
   }
 }
 ```
 
-Four tools ship: `voicebox.speak`, `voicebox.transcribe`, `voicebox.list_captures`, `voicebox.list_profiles`. Per-client voice bindings are managed in **Voicebox → Settings → MCP**. See the [full MCP guide](docs/content/docs/overview/mcp-server.mdx) for tool signatures, resolution precedence, the speaking-pill contract, and security notes.
+Four tools ship: `tuner-box.speak`, `tuner-box.transcribe`, `tuner-box.list_captures`, `tuner-box.list_profiles`. Per-client voice bindings are managed in **Tuner Box → Settings → MCP**. See the [full MCP guide](docs/content/docs/overview/mcp-server.mdx) for tool signatures, resolution precedence, the speaking-pill contract, and security notes.
 
 ```ts
 // In any MCP-aware agent:
-await voicebox.speak({
+await tuner-box.speak({
   text: "Tests passing. Ready to merge.",
   profile: "Morgan",      // optional — falls back to the per-client binding
   personality: true,      // optional — rewrites text through the profile's personality LLM first
@@ -395,7 +430,7 @@ Full API documentation available at `http://127.0.0.1:17493/docs`.
 | **Long-form capture**              | Dual-stream recorder (mic + system audio) with summary LLM transform     |
 | **Platform sinks**                 | Apple Notes, Obsidian, and other opt-in integrations                     |
 | **Plugin architecture**            | Extend with custom models, transforms, and sinks                         |
-| **Mobile companion**               | Control Voicebox from your phone                                         |
+| **Mobile companion**               | Control Tuner Box from your phone                                         |
 
 For the **full engineering status, open-issue triage, and prioritized work queue**, see [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md) — a living document that tracks what's shipped, what's in-flight, candidate TTS engines under evaluation, and why we've accepted or backlogged specific integrations.
 
@@ -408,8 +443,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed setup and contribution guide
 ### Quick Start
 
 ```bash
-git clone https://github.com/jamiepine/voicebox.git
-cd voicebox
+git clone https://github.com/jamiepine/tuner-box.git
+cd tuner-box
 
 just setup   # creates Python venv, installs all deps
 just dev     # starts backend + desktop app
@@ -419,7 +454,7 @@ Install [just](https://github.com/casey/just): `brew install just` or `cargo ins
 
 **Prerequisites:** [Bun](https://bun.sh), [Rust](https://rustup.rs), [Python 3.11+](https://python.org), [Tauri Prerequisites](https://v2.tauri.app/start/prerequisites/), and [Xcode](https://developer.apple.com/xcode/) on macOS.
 
-The repo ships a pre-wired `.mcp.json` at the root — running Claude Code inside this checkout picks up the Voicebox MCP tools automatically once the dev app is running.
+The repo ships a pre-wired `.mcp.json` at the root — running Claude Code inside this checkout picks up the Tuner Box MCP tools automatically once the dev app is running.
 
 ### Building Locally
 
@@ -437,7 +472,7 @@ The guide is optimized for AI coding agents. An [agent skill](.agents/skills/add
 ### Project Structure
 
 ```
-voicebox/
+tuner-box/
 ├── app/              # Shared React frontend
 ├── tauri/            # Desktop app (Tauri + Rust)
 ├── web/              # Web deployment
@@ -470,5 +505,5 @@ MIT License — see [LICENSE](LICENSE) for details.
 ---
 
 <p align="center">
-  <a href="https://voicebox.sh">voicebox.sh</a>
+  <a href="https://tuner-box.sh">tuner-box.sh</a>
 </p>

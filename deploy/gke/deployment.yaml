@@ -1,0 +1,98 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tuner-box
+  namespace: tuner-box
+  labels:
+    app.kubernetes.io/name: tuner-box
+    app.kubernetes.io/component: inference
+spec:
+  # The current backend owns SQLite, profiles, generated audio, and one
+  # process-local generation queue. Keep one pod per data volume/GPU until
+  # those stores are moved to shared services.
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: tuner-box
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: tuner-box
+        app.kubernetes.io/component: inference
+    spec:
+      serviceAccountName: tuner-box
+      securityContext:
+        fsGroup: 999
+        fsGroupChangePolicy: OnRootMismatch
+      terminationGracePeriodSeconds: 120
+      nodeSelector:
+        cloud.google.com/gke-accelerator: nvidia-l4
+      tolerations:
+        - key: nvidia.com/gpu
+          operator: Exists
+          effect: NoSchedule
+      containers:
+        - name: tuner-box
+          image: REGION-docker.pkg.dev/PROJECT_ID/REPOSITORY/tuner-box:TAG
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 17493
+          env:
+            - name: TUNER_BOX_MODELS_DIR
+              value: /app/data/models
+            - name: HF_HOME
+              value: /app/data/models
+            - name: HF_HUB_CACHE
+              value: /app/data/models/hub
+            - name: TUNER_BOX_BACKEND_VARIANT
+              value: cuda
+            # Limit native CPU thread pools; pod replicas provide inference
+            # parallelism, while these threads cover preprocessing and I/O.
+            - name: OMP_NUM_THREADS
+              value: "4"
+            - name: MKL_NUM_THREADS
+              value: "4"
+            - name: TOKENIZERS_PARALLELISM
+              value: "false"
+            - name: TUNER_BOX_CORS_ORIGINS
+              value: ""
+          resources:
+            requests:
+              cpu: "4"
+              memory: 16Gi
+              nvidia.com/gpu: "1"
+            limits:
+              cpu: "8"
+              memory: 24Gi
+              nvidia.com/gpu: "1"
+          volumeMounts:
+            - name: tuner-box-data
+              mountPath: /app/data
+          startupProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 60
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 6
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+      volumes:
+        - name: tuner-box-data
+          persistentVolumeClaim:
+            claimName: tuner-box-data
