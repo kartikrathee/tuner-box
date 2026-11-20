@@ -1,4 +1,4 @@
-# Voicebox Backend
+# Tuner Box Backend
 
 FastAPI server powering voice cloning, speech generation, and audio processing. Runs locally as a Tauri sidecar or standalone via `python -m backend.main`.
 
@@ -16,6 +16,16 @@ python -m backend.main --data-dir /path/to/data
 ```
 
 The server auto-initializes the SQLite database on first startup. Models are downloaded from HuggingFace on first use.
+
+To wait for a model download, load it, and verify the end-to-end health state:
+
+```bash
+./scripts/monitor-model-download.sh qwen-tts-0.6B 0.6B
+```
+
+Set `START_DOWNLOAD=1` if the script should trigger the download when it is
+not already active. `TUNER_BOX_URL`, `POLL_SECONDS`, and `TIMEOUT_SECONDS`
+override the server URL and polling limits.
 
 ## Architecture
 
@@ -111,14 +121,14 @@ curl http://localhost:17493/generate/{id}/status
 
 ```
 {data_dir}/
-  voicebox.db             # SQLite database
+  tuner-box.db             # SQLite database
   profiles/{id}/          # Voice samples per profile
   generations/            # Generated audio files
   cache/                  # Voice prompt cache (memory + disk)
   backends/               # Downloaded CUDA binary (if applicable)
 ```
 
-Default location is the OS-specific app data directory. Override with `--data-dir` or the `VOICEBOX_DATA_DIR` environment variable.
+Default location is the OS-specific app data directory. Override it with `--data-dir`.
 
 ## Code quality
 
