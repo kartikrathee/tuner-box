@@ -14,7 +14,7 @@ export default async function Page(props: PageProps<'/[[...slug]]'>) {
 
   const MDX = page.data.body;
   const markdownUrl = `${page.url}.mdx`;
-  const githubUrl = `https://github.com/jamiepine/voicebox/blob/main/docs/content/docs/${page.path}`;
+  const githubUrl = `https://github.com/jamiepine/tuner-box/blob/main/docs/content/docs/${page.path}`;
 
   return (
     <DocsPage
@@ -22,7 +22,7 @@ export default async function Page(props: PageProps<'/[[...slug]]'>) {
       full={page.data.full}
       editOnGithub={{
         owner: 'jamiepine',
-        repo: 'voicebox',
+        repo: 'tuner-box',
         sha: 'main',
         path: `docs/content/docs/${page.path}`,
       }}

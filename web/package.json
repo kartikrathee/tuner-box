@@ -1,5 +1,5 @@
 {
-  "name": "@voicebox/web",
+  "name": "@tuner-box/web",
   "private": true,
   "version": "0.5.0",
   "type": "module",

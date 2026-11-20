@@ -1,4 +1,4 @@
-# Voicebox development commands
+# Tuner Box development commands
 # Install: brew install just (or cargo install just)
 # Usage: just --list
 
@@ -49,8 +49,8 @@ setup-python:
             echo "Detected NVIDIA GPU — installing CUDA PyTorch..."
             torch_index="https://download.pytorch.org/whl/cu128"
         elif [ -e /dev/kfd ]; then
-            if [ -n "${VOICEBOX_ROCM_VERSION:-}" ]; then
-                rocm_ver="$VOICEBOX_ROCM_VERSION"
+            if [ -n "${TUNER_BOX_ROCM_VERSION:-}" ]; then
+                rocm_ver="$TUNER_BOX_ROCM_VERSION"
             elif lspci 2>/dev/null | grep -qi "Navi 4"; then
                 rocm_ver=7.2
             else
@@ -236,12 +236,12 @@ build-server: _ensure-venv
     New-Item -ItemType Directory -Path "{{ tauri_dir }}/src-tauri/binaries" -Force | Out-Null; \
     & "{{ python }}" backend/build_binary.py; \
     if ($LASTEXITCODE -ne 0) { throw "build_binary.py failed with exit code $LASTEXITCODE" }; \
-    Copy-Item "backend/dist/voicebox-server.exe" "{{ tauri_dir }}/src-tauri/binaries/voicebox-server-$triple.exe" -Force; \
-    Write-Host "Copied sidecar: voicebox-server-$triple.exe"; \
+    Copy-Item "backend/dist/tuner-box-server.exe" "{{ tauri_dir }}/src-tauri/binaries/tuner-box-server-$triple.exe" -Force; \
+    Write-Host "Copied sidecar: tuner-box-server-$triple.exe"; \
     & "{{ python }}" backend/build_binary.py --shim; \
     if ($LASTEXITCODE -ne 0) { throw "build_binary.py --shim failed with exit code $LASTEXITCODE" }; \
-    Copy-Item "backend/dist/voicebox-mcp.exe" "{{ tauri_dir }}/src-tauri/binaries/voicebox-mcp-$triple.exe" -Force; \
-    Write-Host "Copied sidecar: voicebox-mcp-$triple.exe"
+    Copy-Item "backend/dist/tuner-box-mcp.exe" "{{ tauri_dir }}/src-tauri/binaries/tuner-box-mcp-$triple.exe" -Force; \
+    Write-Host "Copied sidecar: tuner-box-mcp-$triple.exe"
 
 # Build CUDA server binary and place in app data dir for local testing
 [windows]
@@ -250,10 +250,10 @@ build-server-cuda: _ensure-venv
     $env:PATH = "{{ venv_bin }};$env:PATH"; \
     & "{{ python }}" backend/build_binary.py --cuda; \
     if ($LASTEXITCODE -ne 0) { throw "build_binary.py --cuda failed with exit code $LASTEXITCODE" }; \
-    $dest = "$env:APPDATA/sh.voicebox.app/backends/cuda"; \
+    $dest = "$env:APPDATA/sh.tuner-box.app/backends/cuda"; \
     if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }; \
     New-Item -ItemType Directory -Path $dest -Force | Out-Null; \
-    Copy-Item "backend/dist/voicebox-server-cuda/*" $dest -Recurse -Force; \
+    Copy-Item "backend/dist/tuner-box-server-cuda/*" $dest -Recurse -Force; \
     Write-Host "Copied CUDA backend to $dest"
 
 # Build everything locally: CPU server + CUDA server + installable Tauri app
@@ -348,12 +348,12 @@ db-init: _ensure-venv
 # Reset database (delete + reinit)
 [unix]
 db-reset:
-    rm -f {{ backend_dir }}/data/voicebox.db
+    rm -f {{ backend_dir }}/data/tuner-box.db
     just db-init
 
 [windows]
 db-reset:
-    if (Test-Path "{{ backend_dir }}/data/voicebox.db") { Remove-Item -Force "{{ backend_dir }}/data/voicebox.db" }
+    if (Test-Path "{{ backend_dir }}/data/tuner-box.db") { Remove-Item -Force "{{ backend_dir }}/data/tuner-box.db" }
     just db-init
 
 # ─── Utilities ────────────────────────────────────────────────────────

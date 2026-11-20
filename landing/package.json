@@ -1,7 +1,7 @@
 {
-  "name": "@voicebox/landing",
+  "name": "@tuner-box/landing",
   "version": "0.5.0",
-  "description": "Landing page for voicebox.sh",
+  "description": "Landing page for tuner-box.sh",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "bun --bun next build",

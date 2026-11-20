@@ -1,5 +1,5 @@
 interface Window {
-  __voiceboxServerStartedByApp?: boolean;
+  __tunerBoxServerStartedByApp?: boolean;
 }
 
 declare module 'virtual:changelog' {
